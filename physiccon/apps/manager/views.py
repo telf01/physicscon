@@ -8,6 +8,9 @@ def index(request):
 
 
 def test(request):
-    usr = User(user_name=request.GET['name'], user_email=request.GET['email'], user_phone=request.GET['subject'])
-    usr.save()
+    try:
+        usr = User(user_name=request.GET['name'], user_email=request.GET['email'], user_phone=request.GET['subject'])
+        usr.save()
+    finally:
+        print("ok")
     return render(request, 'ContactFrom_v1/index.html')
